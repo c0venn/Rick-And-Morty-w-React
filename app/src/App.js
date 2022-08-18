@@ -1,20 +1,21 @@
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import Home from './components/Home/Home';
+import Characters from './components/Characters/Characters';
+import Locations from './components/Locations/Locations';
+import Episodes from './components/Episodes/Episodes';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="" >
-        <h1>Rick app</h1>  
-      </header>
-      <div>
-        <h1 className="text-center">¿Qué buscamos?</h1>
-        <div className="d-flex flex-column" >
-        <button><a href="/characters">Personajes</a></button>
-        <button><a href="/locations">Locaciones</a></button>
-        <button><a href="/episodes">Episodios</a></button>
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="characters" element={<Characters />} />
+        <Route path="locations" element={<Locations />} />
+        <Route path="episodes" element={<Episodes />} />
+      </Route>
+    </Routes>
   );
 }
 
