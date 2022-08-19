@@ -4,10 +4,10 @@ const Layout = () => {
     return (
         <>
             <header className="" >
-                <h1>Rick app</h1>
+                <h1>PokeRick</h1>
             </header>
-            <div className="text-center" >
-                <h1 className="text-center">¿Qué buscamos?</h1>
+            <h1 className="text-center">¿Qué buscamos?</h1>
+            <div className="d-flex justify-content-center" >
                 <Nav />
             </div>
             <Outlet />
