@@ -1,0 +1,13 @@
+div.pagination ul li {
+    background-color: none;
+}
+div.pagination li a {
+    color: #ffff79;
+}
+div.pagination li.active{
+  background-color: #2b8716;
+  border-color: #2b8716;
+}
+div.pagination {
+    background-color: none;
+}

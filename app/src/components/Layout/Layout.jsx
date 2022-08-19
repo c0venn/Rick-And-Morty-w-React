@@ -1,12 +1,13 @@
 import Nav from "../Nav/Nav"
 import { Outlet } from "react-router-dom"
+import './Layout.css'
+
 const Layout = () => {
     return (
         <>
-            <header className="" >
-                <h1>PokeRick</h1>
+            <header className="logo" >
+                <h1>Poke<span>Rick</span></h1>
             </header>
-            <h1 className="text-center">¿Qué buscamos?</h1>
             <div className="d-flex justify-content-center" >
                 <Nav />
             </div>

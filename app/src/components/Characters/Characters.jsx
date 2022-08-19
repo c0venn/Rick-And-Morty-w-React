@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
+import Pagination from "react-js-pagination"
 import Character from "./Character"
+import './Characters.css'
 
 const Characters = () => {
 
     const [list, setList] = useState("");
+    const [activePage, setActivePage] = useState(1)
     
     async function getCharacter() {
         try {
@@ -21,6 +24,23 @@ const Characters = () => {
         }
     }
 
+    async function handlePage(pageNumber) {
+        try {
+            const response = await fetch('https://rickandmortyapi.com/api/character/?page='+pageNumber, {
+                method: 'GET',
+                headers: {
+                    "Content-Type": 'application/json'
+                }
+            });
+            const data = await response.json();
+            setList(data)
+            setActivePage(pageNumber)
+        }  catch(error) {
+            console.error(error)
+        }
+
+    }
+
     useEffect(() => {
         getCharacter()
     },[])
@@ -34,9 +54,20 @@ const Characters = () => {
           ) : (
             <>
             <div className="container mt-4">
+            <div className="d-flex justify-content-center mx-2 pagination" >
+              <Pagination 
+                activePage={activePage} 
+                onChange={handlePage}
+                itemsCountPerPage={list.results.length}
+                totalItemsCount={list.info.count}
+                pageRangeDisplayed={10}
+                itemClass="page-item"
+                linkClass="page-link"
+              />
+            </div>
                 <div className="row mx-auto" >
 
-              {Array.from(list.results).map((character, key) => {
+                {Array.from(list.results).map((character, key) => {
                   return(
                       <Character 
                       itemNumber={key}
@@ -48,6 +79,17 @@ const Characters = () => {
                       )
                     })}
                 </div>
+            <div className="d-flex justify-content-center" >
+              <Pagination 
+                activePage={activePage} 
+                onChange={handlePage}
+                itemsCountPerPage={list.results.length}
+                totalItemsCount={list.info.count}
+                pageRangeDisplayed={10}
+                itemClass="page-item"
+                linkClass="page-link"
+              />
+            </div>
             </div>
             </>
           )}
