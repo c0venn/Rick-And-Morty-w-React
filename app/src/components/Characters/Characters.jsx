@@ -1,15 +1,18 @@
-import React, { useEffect, useState, Suspense } from "react"
-import Pagination from "react-js-pagination"
+import React, { useEffect, useState} from "react"
+import Home from "../Home/Home"
+import Paginator from "../Shared/Pagination"
 import './Characters.css'
 
 const Character = React.lazy(() => import('./Character'))
 
 const Characters = () => {
 
+    const [isLoading, setIsLoading] = useState(false)
     const [list, setList] = useState("");
     const [activePage, setActivePage] = useState(1)
     
     async function getCharacter() {
+        setIsLoading(true);
         try {
             const response = await fetch("https://rickandmortyapi.com/api/character", {
                 method: 'GET',
@@ -20,12 +23,14 @@ const Characters = () => {
             const data = await response.json();
             setList(data);
             console.log(data)
+            setIsLoading(false);
         }  catch (error) {
             console.error(error);
         }
     }
 
     async function handlePage(pageNumber) {
+        setIsLoading(true);
         try {
             const response = await fetch('https://rickandmortyapi.com/api/character/?page='+pageNumber, {
                 method: 'GET',
@@ -36,8 +41,10 @@ const Characters = () => {
             const data = await response.json();
             setList(data)
             setActivePage(pageNumber)
+            setIsLoading(false)
         }  catch(error) {
             console.error(error)
+            setIsLoading(false);
         }
 
     }
@@ -55,9 +62,7 @@ const Characters = () => {
           ) : (
             <>
             <div className="container mt-4">
-            <div className="d-flex justify-content-center mx-2 pagination" >
-              <Suspense fallback={<div>Loading...</div>}>
-              <Pagination 
+              <Paginator
                 activePage={activePage} 
                 onChange={handlePage}
                 itemsCountPerPage={list.results.length}
@@ -67,22 +72,22 @@ const Characters = () => {
                 itemClass="page-item"
                 linkClass="page-link"
                 />
-              </Suspense>
-            </div>
+                {isLoading ? <Home /> : 
                 <div className="row mx-auto" >
 
                 {Array.from(list.results).map((character, key) => {
-                  return(
-                      <Character 
-                      itemNumber={key}
-                      name={character.name}
-                      src={character.image}
-                      alt="..."
-                      species={character.species}
-                      />
-                      )
+                    return(
+                        <Character 
+                        itemNumber={key}
+                        name={character.name}
+                        src={character.image}
+                        alt="..."
+                        species={character.species}
+                        />
+                        )
                     })}
                 </div>
+                }
             </div>
             </>
           )}
