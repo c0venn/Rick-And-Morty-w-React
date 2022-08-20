@@ -1,16 +1,15 @@
 import Nav from "../Nav/Nav"
-import { Outlet } from "react-router-dom"
+import { Outlet, NavLink } from "react-router-dom"
+
 import './Layout.css'
 
 const Layout = () => {
     return (
         <>
             <header className="logo" >
-                <h1>Poke<span>Rick</span></h1>
+                <NavLink to="/" className="fs-1" >Poke<span>Rick</span></NavLink>
             </header>
-            <div className="d-flex justify-content-center" >
-                <Nav />
-            </div>
+            <Nav />
             <Outlet />
         </>
     )

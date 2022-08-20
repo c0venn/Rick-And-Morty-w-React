@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState, Suspense } from "react"
 import Pagination from "react-js-pagination"
-import Character from "./Character"
 import './Characters.css'
+
+const Character = React.lazy(() => import('./Character'))
 
 const Characters = () => {
 
@@ -55,15 +56,18 @@ const Characters = () => {
             <>
             <div className="container mt-4">
             <div className="d-flex justify-content-center mx-2 pagination" >
+              <Suspense fallback={<div>Loading...</div>}>
               <Pagination 
                 activePage={activePage} 
                 onChange={handlePage}
                 itemsCountPerPage={list.results.length}
                 totalItemsCount={list.info.count}
                 pageRangeDisplayed={10}
+                hideDisabled
                 itemClass="page-item"
                 linkClass="page-link"
-              />
+                />
+              </Suspense>
             </div>
                 <div className="row mx-auto" >
 
@@ -79,17 +83,6 @@ const Characters = () => {
                       )
                     })}
                 </div>
-            <div className="d-flex justify-content-center" >
-              <Pagination 
-                activePage={activePage} 
-                onChange={handlePage}
-                itemsCountPerPage={list.results.length}
-                totalItemsCount={list.info.count}
-                pageRangeDisplayed={10}
-                itemClass="page-item"
-                linkClass="page-link"
-              />
-            </div>
             </div>
             </>
           )}

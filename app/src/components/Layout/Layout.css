@@ -1,8 +1,10 @@
-.logo h1 {
+.logo a {
     margin-left: 1rem;
     color: #d2c9b8;
+    text-decoration: none;
+    
 }
 
-.logo h1 span {
+.logo a span {
   color: #a9d3e9;
 }
