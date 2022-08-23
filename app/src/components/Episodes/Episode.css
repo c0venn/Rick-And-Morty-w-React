@@ -1,0 +1,16 @@
+div.episode-card h1 {
+    color: aliceblue;
+}
+div.episode-card p {
+    color: aliceblue;
+}
+
+div.episode {
+    margin: 3rem;
+}
+div.episode-card {
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0px 0px 5px #5cbb47;
+}

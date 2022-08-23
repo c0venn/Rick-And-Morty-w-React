@@ -69,8 +69,6 @@ const Characters = () => {
                 totalItemsCount={list.info.count}
                 pageRangeDisplayed={10}
                 hideDisabled
-                itemClass="page-item"
-                linkClass="page-link"
                 />
                 {isLoading ? <Home /> : 
                 <div className="row mx-auto" >
