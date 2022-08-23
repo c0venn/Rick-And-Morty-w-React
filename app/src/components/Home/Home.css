@@ -3,12 +3,18 @@
     min-width: 250px;
     max-width: 350px;
   }
+  footer div a {
+        font-size: 0.5rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   div img.titulo {
     min-width: 250px;
     max-width: 550px;
+  }
+  footer div a {
+    font-size: 1rem;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -23,13 +29,12 @@
       }
 }
 
-footer div p a {
+footer div a {
     color: #f5f5f5;
     font-weight: 900;
-    font-size: 1.5rem;
     text-decoration: none;
 }
 
-footer div p a:hover {
+footer div a:hover {
     color: #bfde42;
 }

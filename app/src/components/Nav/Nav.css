@@ -4,7 +4,9 @@ nav.navbar a {
     padding: 0rem 1rem 0rem 1rem;
     font-size: x-large;
 }
-
+nav.navbar {
+    border-bottom: 1px solid #a9d3e9;
+}
 nav.navbar a:hover {
     opacity: 0.7;
 }
