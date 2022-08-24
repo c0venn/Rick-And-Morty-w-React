@@ -53,6 +53,7 @@ const Characters = () => {
     }
   }
 
+
   useEffect(() => {
     getCharacter();
   }, []);
@@ -84,6 +85,7 @@ const Characters = () => {
                       itemNumber={key}
                       name={character.name}
                       src={character.image}
+                      link={"/characters/" + character.id}
                       alt="..."
                       species={character.species}
                     />
