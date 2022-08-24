@@ -1,12 +1,6 @@
 div.label h1 {
-  color: #5cbb47;
+  color: #fbf976;
 }
 div.value h2 {
     color: #5cbb47;
-}
-
-div.lobel {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
 }

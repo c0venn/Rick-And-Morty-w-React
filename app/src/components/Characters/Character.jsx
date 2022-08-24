@@ -6,11 +6,11 @@ const Character = (props) => {
 
     return (
         <div className="text-center my-4 col-xs-12 col-md-6 col-xl-4">
-            <div id={props.itemNumber} className="card-character py-4 bg-light" >
+            <div id={props.itemNumber} className="card-character py-4" >
                 <Link to={props.link}>
                   <img src={props.src} alt={props.alt} className="gocharacter rounded-5" />
                 </Link>
-                <h1 className="text-center text-break" >{props.name}</h1>
+                <h1 className="text-center text-truncate" >{props.name}</h1>
                 <p>{props.species}</p>
 
             </div>

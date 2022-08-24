@@ -3,12 +3,12 @@ import './Card.css'
 
 const Card = (props) => {
     return (
-        <div className="row">
+        <div className="row align-items-center">
             <div className="text-center col-xs-12 col-md-6">
                 <h1 className='nombre' >{props.name}</h1>
-                <img src={props.img} alt="profile" />
+                <img src={props.img} alt="profile" className='rounded-5' />
             </div>
-            <div className="perfil text-center my-1 col-xs-12 col-md-6">
+            <div className="perfil my-1 text-center col-xs-12 col-md-6">
               <Label label="Estado:" value={props.status} />
               <Label label="Genero:" value={props.gender} />
               <Label label="Especie:" value={props.species}  />

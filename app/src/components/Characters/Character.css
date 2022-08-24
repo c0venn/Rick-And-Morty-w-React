@@ -1,6 +1,12 @@
 div.card-character {
   box-shadow: 0 0.01rem 0.5rem #5cbb47;
 }
+div.card-character h1 {
+  color: #fbf976;
+}
+div.card-character p {
+  color: #fbf976;
+}
 
 img.gocharacter:hover {
   transform: scale(1.05);
