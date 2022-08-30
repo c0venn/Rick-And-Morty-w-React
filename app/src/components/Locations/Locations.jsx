@@ -67,10 +67,12 @@ const Locations = () => {
                   return (
                       <div className="locations d-flex justify-content-center my-4" >
                       <Location 
+                        key={location.id}
                         item={key}
                         name={location.name}
                         dimension={location.dimension}
                         type={location.type}
+                        link={"/location/" + location.id}
                         />
                     </div>
                 )

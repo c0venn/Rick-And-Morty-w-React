@@ -3,6 +3,7 @@ nav.navbar a {
     color: #fbf976;
     padding: 0rem 1rem 0rem 1rem;
     font-size: x-large;
+    font-weight: 700;
 }
 nav.navbar {
     border-bottom: 1px solid #a9d3e9;

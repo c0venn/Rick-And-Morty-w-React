@@ -10,8 +10,10 @@ const Character = (props) => {
                 <Link to={props.link}>
                   <img src={props.src} alt={props.alt} className="gocharacter rounded-5" />
                 </Link>
+                <div className='p-4'>
                 <h1 className="text-center text-truncate" >{props.name}</h1>
                 <p>{props.species}</p>
+                </div>
 
             </div>
         </div>
