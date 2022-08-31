@@ -1,11 +1,11 @@
+import './Resident.css'
+
 const Resident = (props) => {
   return (
-    <div className="d-flex align-items-center" id={props.item}>
-      <div>
-        <img src={props.image} alt={props.alt} />
-      </div>
-      <div>
-        <h1 className="text-white">{props.name}</h1>
+    <div className="col-xs-12 col-md-6 col-xl-4" >
+      <div id={props.item} className="carta-residente py-4">
+        <img src={props.image} alt={props.alt} className="rounded-5" />
+        <p className="residente">{props.name}</p>
       </div>
     </div>
   );

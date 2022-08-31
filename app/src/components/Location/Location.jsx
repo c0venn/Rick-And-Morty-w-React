@@ -13,10 +13,10 @@ const Location = () => {
     try {
       residents.forEach((index) => {
         fetch(index)
-        .then(response => response.json())
-        .then(data => info.push(data))
+          .then((response) => response.json())
+          .then((data) => info.push(data));
       });
-      console.log(info)
+      console.log(info);
       SetResident(info);
     } catch (error) {
       console.error(error);
@@ -54,11 +54,15 @@ const Location = () => {
           <p>no se encuentra la locación</p>
         </div>
       ) : (
-        <div className="text-center mt-4">
-          <h1 className="text-white">{location.name}</h1>
-          <Link to={"/location/" + (location.id - 1)}>back</Link>
-          <Link to={"/location/" + (location.id + 1)}>next</Link>
-          <div>
+        <div className="container text-center mt-4">
+          <div className="d-flex justify-content-around align-items-center">
+            <Link to={"/location/" + (location.id - 1)} style={{ color: "#5cbb47", fontWeight: 700 }}>back</Link>
+            <h1 style={{ color: "#fbf976", fontWeight: 700 }}>
+              {location.name}
+            </h1>
+            <Link to={"/location/" + (location.id + 1)} style={{ color: "#5cbb47", fontWeight: 700 }}>next</Link>
+          </div>
+          <div className="row mx-auto mt-4">
             {Array.from(resident).map((resident) => {
               return (
                 <Resident
