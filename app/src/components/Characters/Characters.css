@@ -8,3 +8,6 @@ a.page-link.undefined {
 a.page-link.undefined.active {
     border-color: #b3dcf0;
 }
+button.search {
+    margin-left: -3rem;
+}

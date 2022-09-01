@@ -13,6 +13,7 @@ const Character = (props) => {
                 <div className='p-4'>
                 <h1 className="text-center text-truncate" >{props.name}</h1>
                 <p>{props.species}</p>
+                <p>{props.status}</p>
                 </div>
 
             </div>

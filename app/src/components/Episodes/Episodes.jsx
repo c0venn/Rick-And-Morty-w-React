@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import Home from "../Home/Home";
 import Paginator from "../Shared/Pagination";
 import Episode from "./Episode";
 
 const Episodes = () => {
   const [episodes, SetEpisodes] = useState("");
-  const [activePage, setActivePage] = useState(1)
-
+  const [activePage, setActivePage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function getEpisodes() {
+    setIsLoading(true);
     try {
       const response = await fetch("https://rickandmortyapi.com/api/episode", {
         method: "GET",
@@ -17,24 +19,29 @@ const Episodes = () => {
       });
       const data = await response.json();
       SetEpisodes(data);
-      console.log(data);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
   }
   async function handlePage(pageNumber) {
+    setIsLoading(true);
     try {
-        const response = await fetch('https://rickandmortyapi.com/api/episode/?page='+pageNumber, {
-            method: 'GET',
-            headers: {
-                "Content-Type": 'application/json'
-            }
-        });
-        const data = await response.json();
-        SetEpisodes(data)
-        setActivePage(pageNumber)
-    }  catch(error) {
-        console.error(error)
+      const response = await fetch(
+        "https://rickandmortyapi.com/api/episode/?page=" + pageNumber,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      SetEpisodes(data);
+      setActivePage(pageNumber);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -49,26 +56,30 @@ const Episodes = () => {
       ) : (
         <>
           <div className="container mt-4">
-            <Paginator 
-              activePage={activePage} 
+            <Paginator
+              activePage={activePage}
               onChange={handlePage}
               itemsCountPerPage={episodes.results.length}
               totalItemsCount={episodes.info.count}
               pageRangeDisplayed={3}
               hideDisabled
             />
-            <div className="row mx-auto justify-content-center">
-              {Array.from(episodes.results).map((episode, key) => {
-                return (
-                  <Episode
-                    id={key}
-                    episode={episode.episode}
-                    name={episode.name}
-                    date={episode.air_date}
-                  />
-                );
-              })}
-            </div>
+            {isLoading ? (
+              <Home />
+            ) : (
+              <div className="row mx-auto justify-content-center">
+                {Array.from(episodes.results).map((episode, key) => {
+                  return (
+                    <Episode
+                      id={key}
+                      episode={episode.episode}
+                      name={episode.name}
+                      date={episode.air_date}
+                    />
+                  );
+                })}
+              </div>
+            )}
           </div>
         </>
       )}

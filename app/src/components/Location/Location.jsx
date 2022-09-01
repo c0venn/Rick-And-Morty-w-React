@@ -45,6 +45,7 @@ const Location = () => {
     }
     getLocation();
     fetchResident();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idLocation]);
 
   return (
@@ -56,11 +57,11 @@ const Location = () => {
       ) : (
         <div className="container text-center mt-4">
           <div className="d-flex justify-content-around align-items-center">
-            <Link to={"/location/" + (location.id - 1)} style={{ color: "#5cbb47", fontWeight: 700 }}>back</Link>
+            <Link to={"/locations/" + (location.id - 1)} style={{ color: "#5cbb47", fontWeight: 700 }}>back</Link>
             <h1 style={{ color: "#fbf976", fontWeight: 700 }}>
               {location.name}
             </h1>
-            <Link to={"/location/" + (location.id + 1)} style={{ color: "#5cbb47", fontWeight: 700 }}>next</Link>
+            <Link to={"/locations/" + (location.id + 1)} style={{ color: "#5cbb47", fontWeight: 700 }}>next</Link>
           </div>
           <div className="row mx-auto mt-4">
             {Array.from(resident).map((resident) => {

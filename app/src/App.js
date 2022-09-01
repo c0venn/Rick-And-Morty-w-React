@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from './components/Home/Home';
 import Characters from './components/Characters/Characters';
@@ -16,8 +16,9 @@ function App() {
         <Route path="characters" element={<Characters />} />
         <Route path="characters/:idCharacter" element={<Character />} />
         <Route path="locations" element={<Locations />} />
-        <Route path="location/:idLocation" element={<Location />} />
+        <Route path="locations/:idLocation" element={<Location />} />
         <Route path="episodes" element={<Episodes />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );
